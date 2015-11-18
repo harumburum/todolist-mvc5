@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "//TODO";
+}
+
+<div class="row" ng-app="app">
+    <div class="col-md-6 center-block" ng-controller="TodoController as vm">
+        <div class="todolist not-done">
+            <h1>@ViewBag.Title</h1>
+            <form ng-submit="vm.add()">
+                <div class="input-group">
+                    <input type="text" class="form-control add-todo" placeholder="Add new todo" ng-model="vm.todoText">
+                    <span class="input-group-btn">
+                        <input type="submit" class="btn btn-primary" value="Add" ng-disabled="!vm.canAdd()">
+                    </span>
+                </div>
+            </form>
+            <button id="checkAll" class="btn btn-success" ng-click="vm.archive()" ng-disabled="!vm.canArchive()">Remove Completed</button>
+            <hr>
+            <ul id="sortable" class="list-unstyled">
+                <li class="ui-state-default" ng-repeat="todo in vm.todos">
+                    <div class="checkbox">
+                        <label class="done-{{todo.done}}">
+                            <input type="checkbox" ng-model="todo.done" ng-change="vm.changed(todo)" /> {{todo.text}}
+                        </label>
+                    </div>
+                </li>
+            </ul>
+            <div class="todo-footer">
+                <strong><span class="count-todos"></span></strong> {{vm.remaining()}} of {{vm.todos.length}} remaining
+            </div>
+        </div>
+    </div>
+</div>

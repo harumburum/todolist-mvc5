@@ -1,2 +1,2 @@
-# todolist-mvc5
-Todo List Web Application
+# Todo List
+Asp.Net Mvc 5 + AngularJs Todo List Application
